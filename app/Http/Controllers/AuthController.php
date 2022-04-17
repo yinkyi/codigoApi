@@ -53,7 +53,7 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
         if(!Auth::attempt($credentials,$request->remember_me))
             return response()->json([
-                'message' => 'Unauthorized'
+                'message' => 'Email and Password does not match!'
             ], 401);
         $user = $request->user();
         $tokenResult = $user->createToken('Personal Access Token');
